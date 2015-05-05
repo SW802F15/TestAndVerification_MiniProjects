@@ -1,15 +1,24 @@
 \section{Test Design}
-The success of the entire product is determined based on the completion of the overall user story: \textit{Play music that fits with the user's running speed.}
+The success of the entire product is determined based on the completion of this overall user story: 
+
+\begin{center}
+\textit{The application must be able to play music, which beats-per-minute matches, with the user's running pace.}
+\end{center}
 
 For better estimation of completion, we have created multiple smaller user stories, which will serve as basis for the overall success.
 
-All user stores should be given a priority, low or high, where low priority stories must be non-critical, i.e., the app still fulfills the primary user story if they fail. We accept that low priority user stories fail. All other tests must pass.\\
+All user stories are given a priority, low or high.
+Low priority stories are non-critical for the application, i.e., the application still fulfils the primary user story if they fail. 
+High priority stories are critical for the application, i.e., the application cannot fulfil the primary user story if they fail. 
 
-\noindent For a test to pass, it is essential that it at least is tested as perscribed:
+For the product to be concluded as \textit{passed} for this acceptance test, all high priority user stories must pass.
+However, low priority stories is allowed to \textit{fail} without affecting the overall assessment.
+
+For a user story to pass, it must adhere to the following conditions:
 
 \begin{itemize}
-\item All user stories must be tested with unit tests, descriping its functionallity. (Flyt til intro som led i xp)
-\item All actions (button press, etc.) Must be accomandated within X seconds.
-\item The functionality of the user story must work, if activated as perscribed. (Test to pass)
+\item All user stories must be tested with unit tests, describing its functionality. (This is also a part of eXtreme Programming, hence it is done as part of our methodology.)
+\item All actions (button press, screen swipe, etc.) must be accommodated within X seconds.
+\item The functionality of the user story must work, if activated as prescribed. (Test to pass)
 \end{itemize}
 
