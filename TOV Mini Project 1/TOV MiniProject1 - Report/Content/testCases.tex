@@ -8,24 +8,76 @@
 \item I am not able to open other file types than .mp3.
 \end{itemize}}
 
+\begin{itemize}
+\item Precondition: 
+\subitem The application has launched the MusicPlayer Activity, and is ready to play.
+
+\item Procedure:
+\subitem Press the \texttt{Play} button.
+\subitem Press the \texttt{Volume Up} button.
+\subitem Press the \texttt{Volume Down} button.
+
+\item Postcondition:
+\subitem The application now plays music, which has been at different volumes.
+\end{itemize}
+
+\rule{\textwidth}{1pt}
+
 \story{Locate .mp3 files on device.}{High}
 {As a user, I, want the application to search the directories I specify for .mp3 files.}
 {\begin{itemize}
-\item When I start the application, it finds the 12 .mp3 files stored in /sdcard/Music/tempo.
+\item When I start the application, it finds the .mp3 files stored in /sdcard/Music.
 \end{itemize}}
+
+\begin{itemize}
+\item Precondition: 
+\subitem Application is not running.
+\subitem At least 6 .mp3 files are stored in /sdcard/Music.
+
+\item Procedure:
+\subitem Launch the application.
+
+\item Postcondition:
+\subitem The application launches the MusicPlayer Activity, ready to play.
+\end{itemize}
+
+\rule{\textwidth}{1pt}
 
 \story{Obtain beats-per-minute for song.}{High}
 {As a user, I, want the application to automatically obtain the beats-per-minute (BPM) of the .mp3 files located.}
 {\begin{itemize}
-\item Obtains 113 as BPM for Rick Astley's Never Gonna Give You Up, when location the 12 .mp3 files stored in /sdcard/Music/tempo.
+\item Obtain 113 as BPM for Rick Astley's Never Gonna Give You Up, when locating the 12 .mp3 files stored in /sdcard/Music.
 \item If no BPM is found for a song, it will not be playable.
-\item I am able to manual set BPM for a song.
+\item I am able to manually set BPM for a song.
 \end{itemize}}
 
+\begin{itemize}
+\item Precondition: 
+\subitem Application is not running.
+\subitem At least 6 .mp3 files are stored in /sdcard/Music.
+\subitem One of the 6 .mp3 files are Rick Astley's Never Gonna Give You Up.
+\subitem An internet connection is established.
+
+\item Procedure:
+\subitem Launch the application.
+\subitem Locate Never Gonna Give You Up as current song, by pressing the \texttt{Next} button until this happens.
+
+\item Postcondition:
+\subitem Verify the BPM is 113.
+\end{itemize}
+
+\rule{\textwidth}{1pt}
+
 \story{Navigate songs.}{High}
-{ }
+{As a user, I, want to be able to skip the current song, listen to the previously played song again. 
+Further I want to be able to stop and/or pause the playing song.
+It should also be possible to seek in the playing song.}
 {\begin{itemize}
-\item Criteria 1
+\item A \texttt{Next} button must exist, which skips to the next song.
+\item A \texttt{Previous} button must exist, which skips to the previously played song.
+\item A \texttt{Stop} button must exist, which stops the music.
+\item A \texttt{Pause} button must exist, which pauses the music, so it can be resumed from the paused position.
+\item A \texttt{SeekBar} must exist, which can seek in the playing song.
 \end{itemize}}
 
 \story{Keep playing when screen is off.}{High}
