@@ -427,13 +427,14 @@ morekeywords={}
 }
 
 
-\newcommand{\story}[4]{
+\newcommand{\story}[5]{
 \begin{table}[H]
 \begin{tabularx}{\textwidth}{>{\hsize=.4\hsize}l X}
 \noindent \textsc{Title:} & #1\\
 \noindent \textsc{Priority:} & #2\\
 \noindent \textsc{Story:} & #3\\\\
 \noindent \textsc{\parbox[t]{2cm}{Acceptance\\Criteria:}} & \vspace{-7mm} #4\\
+\noindent \textsc{\parbox[t]{2cm}{Acceptance\\Tests:}} & \vspace{-7mm} #5\\
 \end{tabularx}
 \end{table}
 }

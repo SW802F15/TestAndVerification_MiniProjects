@@ -7,41 +7,40 @@
 \item I am able to regulate the volume when listening to the song.
 \item I am not able to open other file types than .mp3.
 \end{itemize}}
-
-\begin{itemize}
+{\begin{itemize}
 \item Precondition: 
-\subitem The application has launched the MusicPlayer Activity, and is ready to play.
+\subitem $-$ The application has launched the MusicPlayer Activity, and is ready to play.
 
 \item Procedure:
-\subitem Press the \texttt{Play} button.
-\subitem Press the \texttt{Volume Up} button.
-\subitem Press the \texttt{Volume Down} button.
+\subitem $-$ Press the \texttt{Play} button.
+\subitem $-$ Verify music is playing.
+\subitem $-$ Press the \texttt{Volume Up} button.
+\subitem $-$ Verify volume increased.
+\subitem $-$ Press the \texttt{Volume Down} button.
+\subitem $-$ Verify volume decreased.
 
 \item Postcondition:
-\subitem The application now plays music, which has been at different volumes.
-\end{itemize}
+\subitem $-$ Verify all verifications have passed.
+\end{itemize}}
 
-\rule{\textwidth}{1pt}
 
 \story{Locate .mp3 files on device.}{High}
 {As a user, I, want the application to search the directories I specify for .mp3 files.}
 {\begin{itemize}
 \item When I start the application, it finds the .mp3 files stored in /sdcard/Music.
 \end{itemize}}
-
-\begin{itemize}
+{\begin{itemize}
 \item Precondition: 
-\subitem Application is not running.
-\subitem At least 6 .mp3 files are stored in /sdcard/Music.
+\subitem $-$ Application is not running.
+\subitem $-$ At least 6 .mp3 files are stored in /sdcard/Music.
 
 \item Procedure:
-\subitem Launch the application.
+\subitem $-$ Launch the application.
 
 \item Postcondition:
-\subitem The application launches the MusicPlayer Activity, ready to play.
-\end{itemize}
+\subitem $-$ The application launches the MusicPlayer Activity, ready to play.
+\end{itemize}}
 
-\rule{\textwidth}{1pt}
 
 \story{Obtain beats-per-minute for song.}{High}
 {As a user, I, want the application to automatically obtain the beats-per-minute (BPM) of the .mp3 files located.}
@@ -50,23 +49,21 @@
 \item If no BPM is found for a song, it will not be playable.
 \item I am able to manually set BPM for a song.
 \end{itemize}}
-
-\begin{itemize}
+{\begin{itemize}
 \item Precondition: 
-\subitem Application is not running.
-\subitem At least 6 .mp3 files are stored in /sdcard/Music.
-\subitem One of the 6 .mp3 files are Rick Astley's Never Gonna Give You Up.
-\subitem An internet connection is established.
+\subitem $-$ Application is not running.
+\subitem $-$ At least 6 .mp3 files are stored in /sdcard/Music.
+\subitem $-$ One of the 6 .mp3 files are Rick Astley's Never Gonna Give You Up.
+\subitem $-$ An internet connection is established.
 
 \item Procedure:
-\subitem Launch the application.
-\subitem Locate Never Gonna Give You Up as current song, by pressing the \texttt{Next} button until this happens.
+\subitem $-$ Launch the application.
+\subitem $-$ Locate Never Gonna Give You Up as current song, by pressing the \texttt{Next} button until this happens.
 
 \item Postcondition:
-\subitem Verify the BPM is 113.
-\end{itemize}
+\subitem $-$ Verify the BPM is 113.
+\end{itemize}}
 
-\rule{\textwidth}{1pt}
 
 \story{Navigate songs.}{High}
 {As a user, I, want to be able to skip the current song, listen to the previously played song again. 
@@ -79,51 +76,109 @@ It should also be possible to seek in the playing song.}
 \item A \texttt{Pause} button must exist, which pauses the music, so it can be resumed from the paused position.
 \item A \texttt{SeekBar} must exist, which can seek in the playing song.
 \end{itemize}}
+{\begin{itemize}
+\item Precondition: 
+\subitem $-$ The application must be launched in the MusicPlayer Activity.
+
+\item Procedure:
+\subitem $-$ Press \texttt{Play} button.
+\subitem $-$ Press \texttt{Next} button.
+\subitem $-$ Verify the playing song has changed to the next song in queue.
+\subitem $-$ Press \texttt{Previous} button.
+\subitem $-$ Verify the playing song has changed back to the previous song.
+\subitem $-$ Press \texttt{Stop} button.
+\subitem $-$ Verify the playing has stopped and the \texttt{SeekBar} has reset.
+\subitem $-$ Press \texttt{Play} button.
+\subitem $-$ Verify the playing has started with the beginning of song previously playing.
+\subitem $-$ Press \texttt{Pause} button.
+\subitem $-$ Verify the playing has stopped and the \texttt{SeekBar} is not moving from its position.
+\subitem $-$ Press \texttt{Play} button.
+\subitem $-$ Verify the playing has started at the paused position of song previously playing.
+\subitem $-$ Press the centre of the \texttt{SeekBar}.
+\subitem $-$ Verify the playing song has skipped to the chosen position.
+
+\item Postcondition:
+\subitem $-$ Verify all verifications have passed.
+\end{itemize}}
 
 \story{Keep playing when screen is off.}{High}
-{ }
+{As a user, I, would like to save power by turning off the screen while the music is playing.}
 {\begin{itemize}
-\item Criteria 1
+\item The music keeps playing after the \texttt{Power} button is pressed.
+\end{itemize}}
+{\begin{itemize}
+\item Precondition: 
+\subitem $-$ The application must be launched in the MusicPlayer Activity.
+
+\item Procedure:
+\subitem $-$ Press \texttt{Play} button.
+\subitem $-$ Verify music is playing.
+\subitem $-$ Press \texttt{Power} button.
+\subitem $-$ Verify screen turns off.
+
+\item Postcondition:
+\subitem $-$ Verify the music is still playing.
 \end{itemize}}
 
 \story{Adjust music speed.}{Low}
-{ }
+{As a user, I, want the music to match my pace even when the playing song's tempo is not exactly my pace.}
 {\begin{itemize}
-\item Criteria 1
+\item The application must be able to match my pace with appropriate songs, when the smartphone is held in either the hand, the pocket, or on the arm.
 \end{itemize}}
-
-\story{Seek in song.}{Low}
-{ }
 {\begin{itemize}
-\item Criteria 1
+\item Precondition: 
+\subitem $-$ The application must be launched in the MusicPlayer Activity.
+\subitem $-$ The application must be playing music.
+\subitem $-$ The user must have the device on his arm.
+
+\item Procedure:
+\subitem $-$ Start running.
+\subitem $-$ Increase running pace.
+
+\item Postcondition:
+\subitem $-$ Verify the tempo of the playing song increased.
 \end{itemize}}
-
-
 
 \subsection{Step Counter}
-\story{Count the steps of the user.}{High}
-{ }
+\story{Detect the pace of the user.}{High}
+{As a user, I, want the application to detect my pace and display it on the screen. }
 {\begin{itemize}
 \item Criteria 1
 \end{itemize}}
-
-\story{Calculate steps-per-minute of the user.}{High}
-{ }
 {\begin{itemize}
-\item Criteria 1
+\item Precondition: 
+\subitem $-$ The application must be launched in the MusicPlayer Activity.
+\subitem $-$ The user must have the device on his arm.
+
+\item Procedure:
+\subitem $-$ Start running.
+\subitem $-$ Increase running pace.
+
+\item Postcondition:
+\subitem $-$ Verify pace is displayed on the screen and increases.
 \end{itemize}}
-
-\story{Display steps-per-minute of the user.}{Low}
-{ }
-{\begin{itemize}
-\item Criteria 1
-\end{itemize}}
-
-
 
 \subsection{Non-graphical Interface}
-\story{Control while smartphone is on arm.}{High}
+\story{As a user, I, would like to save power by turning off the screen while still being able to navigate songs when the screen is off.
+A screen is turned off when the power button is pressed.}{High}
 { }
 {\begin{itemize}
-\item Criteria 1
+\item The application can still be controlled after the \texttt{Power} button is pressed.
+\end{itemize}}
+{\begin{itemize}
+\item Precondition: 
+\subitem $-$ The application must be launched in the MusicPlayer Activity.
+
+\item Procedure:
+\subitem $-$ Press \texttt{Power} button.
+\subitem $-$ Verify screen turns off.
+\subitem $-$ Perform single tap.
+\subitem $-$ Verify application starts playing.
+\subitem $-$ Perform double tap.
+\subitem $-$ Verify playing changed to next song in queue.
+\subitem $-$ Perform triple tap.
+\subitem $-$ Verify playing song changed back to previous played song.
+
+\item Postcondition:
+\subitem $-$ Verify all verifications have passed.
 \end{itemize}}
