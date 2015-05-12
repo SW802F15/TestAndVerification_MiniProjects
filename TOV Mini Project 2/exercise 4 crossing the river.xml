@@ -22,9 +22,9 @@ bool boySide[numBoys];
 bool policeSide[numPolice];
 bool thiefSide[numThiefs];
 
+clock time;
 
-
-chan sail_control, sail_passenger;
+chan sail_control, sail_passenger, sail_completed;
 
 
 </declaration>
@@ -33,37 +33,47 @@ chan sail_control, sail_passenger;
 		<declaration>// Place local declarations here.
 
 </declaration>
-		<location id="id0" x="-442" y="-493">
+		<location id="id0" x="-527" y="-450">
+		</location>
+		<location id="id1" x="-442" y="-493">
 			<name x="-452" y="-527">Sailing</name>
-			<committed/>
 		</location>
-		<location id="id1" x="-578" y="-493">
+		<location id="id2" x="-578" y="-493">
 		</location>
-		<init ref="id1"/>
+		<init ref="id2"/>
 		<transition>
 			<source ref="id0"/>
-			<target ref="id1"/>
-			<label kind="assignment" x="-442" y="-476">boatSide = !boatSide, boatSailing = false</label>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-671" y="-467">sail_completed?</label>
 		</transition>
 		<transition>
-			<source ref="id0"/>
-			<target ref="id1"/>
-			<label kind="synchronisation" x="-646" y="-442">sail_passenger?</label>
-			<label kind="assignment" x="-646" y="-425">boatSide = !boatSide, boatSailing = false</label>
-			<nail x="-510" y="-450"/>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-442" y="-476">sail_completed?</label>
+			<label kind="assignment" x="-442" y="-459">boatSide = !boatSide, boatSailing = false</label>
 		</transition>
 		<transition>
 			<source ref="id1"/>
 			<target ref="id0"/>
+			<label kind="synchronisation" x="-561" y="-425">sail_passenger?</label>
+			<label kind="assignment" x="-561" y="-408">boatSide = !boatSide, boatSailing = false</label>
+			<nail x="-484" y="-450"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
 			<label kind="synchronisation" x="-552" y="-586">sail_control?</label>
-			<label kind="assignment" x="-493" y="-561">boatSailing = true</label>
+			<label kind="assignment" x="-552" y="-569">boatSailing = true</label>
 			<nail x="-518" y="-544"/>
 		</transition>
 	</template>
 	<template>
 		<name>Mother</name>
 		<parameter>int id</parameter>
-		<declaration>bool aloneWithBoys(){
+		<declaration>clock x;
+
+
+bool aloneWithBoys(){
     int i;
     for (i = 0 ; i &lt; numFathers ; i++){
         if (fatherSide[i] == motherSide[id]){
@@ -79,13 +89,24 @@ chan sail_control, sail_passenger;
 }
 
 </declaration>
-		<location id="id2" x="-197" y="-37">
+		<location id="id3" x="-340" y="-34">
+			<name x="-382" y="-68">Sailing</name>
+		</location>
+		<location id="id4" x="-197" y="-37">
+			<name x="-221" y="-68">OnShore</name>
 			<label kind="invariant" x="-255" y="8">!aloneWithBoys() || boatSailing</label>
 		</location>
-		<init ref="id2"/>
+		<init ref="id4"/>
 		<transition>
-			<source ref="id2"/>
-			<target ref="id2"/>
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<label kind="guard" x="-374" y="-136">x == 4</label>
+			<label kind="synchronisation" x="-374" y="-119">sail_completed!</label>
+			<nail x="-272" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id4"/>
 			<label kind="guard" x="-51" y="-85">motherSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-51" y="-68">sail_passenger!</label>
 			<label kind="assignment" x="-51" y="-51">motherSide[id] = !motherSide[id]</label>
@@ -93,19 +114,20 @@ chan sail_control, sail_passenger;
 			<nail x="-85" y="-8"/>
 		</transition>
 		<transition>
-			<source ref="id2"/>
-			<target ref="id2"/>
-			<label kind="guard" x="-569" y="-75">motherSide[id] == boatSide</label>
-			<label kind="synchronisation" x="-569" y="-58">sail_control!</label>
-			<label kind="assignment" x="-569" y="-41">motherSide[id] = !motherSide[id]</label>
-			<nail x="-306" y="0"/>
-			<nail x="-306" y="-68"/>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-561" y="-25">motherSide[id] == boatSide</label>
+			<label kind="synchronisation" x="-561" y="-8">sail_control!</label>
+			<label kind="assignment" x="-561" y="8">motherSide[id] = !motherSide[id], x = 0</label>
+			<nail x="-272" y="-8"/>
 		</transition>
 	</template>
 	<template>
 		<name>Father</name>
 		<parameter>int id</parameter>
-		<declaration>bool aloneWithGirls(){
+		<declaration>clock x;
+
+bool aloneWithGirls(){
     int i;
     for (i = 0 ; i &lt; numMothers ; i++){
         if (motherSide[i] == fatherSide[id]){
@@ -121,13 +143,22 @@ chan sail_control, sail_passenger;
 }
 
 </declaration>
-		<location id="id3" x="-306" y="-221">
+		<location id="id5" x="-459" y="-221">
+		</location>
+		<location id="id6" x="-306" y="-221">
 			<label kind="invariant" x="-364" y="-176">!aloneWithGirls() || boatSailing</label>
 		</location>
-		<init ref="id3"/>
+		<init ref="id6"/>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id3"/>
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-398" y="-276">x == 3</label>
+			<label kind="synchronisation" x="-398" y="-259">sail_completed!</label>
+			<nail x="-399" y="-255"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id6"/>
 			<label kind="guard" x="-160" y="-269">fatherSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-160" y="-252">sail_passenger!</label>
 			<label kind="assignment" x="-160" y="-235">fatherSide[id] = !fatherSide[id]</label>
@@ -135,24 +166,32 @@ chan sail_control, sail_passenger;
 			<nail x="-194" y="-192"/>
 		</transition>
 		<transition>
-			<source ref="id3"/>
-			<target ref="id3"/>
+			<source ref="id6"/>
+			<target ref="id5"/>
 			<label kind="guard" x="-678" y="-259">fatherSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-678" y="-242">sail_control!</label>
-			<label kind="assignment" x="-678" y="-225">fatherSide[id] = !fatherSide[id]</label>
-			<nail x="-415" y="-184"/>
-			<nail x="-415" y="-252"/>
+			<label kind="assignment" x="-678" y="-225">fatherSide[id] = !fatherSide[id], x = 0</label>
+			<nail x="-399" y="-195"/>
 		</transition>
 	</template>
 	<template>
 		<name>PoliceOfficer</name>
 		<parameter>int id</parameter>
-		<location id="id4" x="-306" y="-221">
+		<declaration>clock x;</declaration>
+		<location id="id7" x="-416" y="-255">
 		</location>
-		<init ref="id4"/>
+		<location id="id8" x="-306" y="-221">
+		</location>
+		<init ref="id8"/>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-399" y="-289">x == 2</label>
+			<label kind="synchronisation" x="-399" y="-272">sail_completed!</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id8"/>
 			<label kind="guard" x="-160" y="-269">policeSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-160" y="-252">sail_passenger!</label>
 			<label kind="assignment" x="-160" y="-235">policeSide[id] = !policeSide[id]</label>
@@ -160,24 +199,23 @@ chan sail_control, sail_passenger;
 			<nail x="-194" y="-192"/>
 		</transition>
 		<transition>
-			<source ref="id4"/>
-			<target ref="id4"/>
+			<source ref="id8"/>
+			<target ref="id7"/>
 			<label kind="guard" x="-678" y="-259">policeSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-678" y="-242">sail_control!</label>
-			<label kind="assignment" x="-678" y="-225">policeSide[id] = !policeSide[id]</label>
+			<label kind="assignment" x="-678" y="-225">policeSide[id] = !policeSide[id], x = 0</label>
 			<nail x="-415" y="-184"/>
-			<nail x="-415" y="-252"/>
 		</transition>
 	</template>
 	<template>
 		<name>Girl</name>
 		<parameter>int id</parameter>
-		<location id="id5" x="-212" y="-289">
+		<location id="id9" x="-212" y="-289">
 		</location>
-		<init ref="id5"/>
+		<init ref="id9"/>
 		<transition>
-			<source ref="id5"/>
-			<target ref="id5"/>
+			<source ref="id9"/>
+			<target ref="id9"/>
 			<label kind="guard" x="-66" y="-337">girlSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-66" y="-320">sail_passenger!</label>
 			<label kind="assignment" x="-66" y="-303">girlSide[id] = !girlSide[id]</label>
@@ -188,12 +226,12 @@ chan sail_control, sail_passenger;
 	<template>
 		<name>Boy</name>
 		<parameter>int id</parameter>
-		<location id="id6" x="-212" y="-289">
+		<location id="id10" x="-212" y="-289">
 		</location>
-		<init ref="id6"/>
+		<init ref="id10"/>
 		<transition>
-			<source ref="id6"/>
-			<target ref="id6"/>
+			<source ref="id10"/>
+			<target ref="id10"/>
 			<label kind="guard" x="-66" y="-337">boySide[id] == boatSide</label>
 			<label kind="synchronisation" x="-66" y="-320">sail_passenger!</label>
 			<label kind="assignment" x="-66" y="-303">boySide[id] = !boySide[id]</label>
@@ -207,39 +245,39 @@ chan sail_control, sail_passenger;
 		<declaration>bool aloneWithFamily(){
     int i;
     for (i = 0; i &lt; numPolice ; i++){
-        if (policeSide[i] &amp;&amp; thiefSide[id]){
+        if (policeSide[i] == thiefSide[id]){
             return false;
         }
     }
     for (i = 0; i &lt; numMothers ; i++){
-        if (motherSide[i] &amp;&amp; thiefSide[id]){
+        if (motherSide[i] == thiefSide[id]){
             return true;
         }
     }
     for (i = 0; i &lt; numFathers ; i++){
-        if (fatherSide[i] &amp;&amp; thiefSide[id]){
+        if (fatherSide[i] == thiefSide[id]){
             return true;
         }
     }
     for (i = 0; i &lt; numGirls ; i++){
-        if (girlSide[i] &amp;&amp; thiefSide[id]){
+        if (girlSide[i] == thiefSide[id]){
             return true;
         }
     }
     for (i = 0; i &lt; numBoys ; i++){
-        if (boySide[i] &amp;&amp; thiefSide[id]){
+        if (boySide[i] == thiefSide[id]){
             return true;
         }
     }
     return false;
 }</declaration>
-		<location id="id7" x="-170" y="-195">
+		<location id="id11" x="-170" y="-195">
 			<label kind="invariant" x="-212" y="-161">!aloneWithFamily() || boatSailing</label>
 		</location>
-		<init ref="id7"/>
+		<init ref="id11"/>
 		<transition>
-			<source ref="id7"/>
-			<target ref="id7"/>
+			<source ref="id11"/>
+			<target ref="id11"/>
 			<label kind="guard" x="-24" y="-243">thiefSide[id] == boatSide</label>
 			<label kind="synchronisation" x="-24" y="-226">sail_passenger!</label>
 			<label kind="assignment" x="-24" y="-209">thiefSide[id] = !thiefSide[id]</label>
