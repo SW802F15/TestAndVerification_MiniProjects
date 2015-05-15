@@ -1,3 +1,14 @@
 \section{Task 2}
 \label{sec:task2}
 \textit{Add temporal constraints (e.g. each adult takes a certain time to cross the river with the boat) and try to find the quickest possible schedule.}
+As it can be seen on \Cref{fig:mother} we added a clock to the people who can control the boat. Each person got a differet time:
+
+\begin{itemize}
+	\item Mother: 4 units
+	\item Father: 2 units
+	\item Police Officer: 1 unit
+\end{itemize}
+
+\noindent To better be able to compare different schedules, we added a counter to each template, telling us how many times they crossed the river. Experimenting with this confirmed that there are several different possiblilties. We also found out that doing a breath-first search resulted in the expected result - our query verifies and returns a schedule, but if we do a debth-first search it returns en error message.
+
+\noindent We set the verifier to give us the fastest simulation, and now we got the same schedule as in task 1. This schedule takes 31 units, and it shows, the mother passes 3 times, the father passes 5 times, and the police officer passes 9 times. If we modify the query to require \texttt{mother.count > 3} the new schedule takes 33 units, if we modify it to require \texttt{father.count > 5} it takes 35 units, and finally if we modify it to require \texttt{police.count > 9} it takes 33 units (in the latter the police officer simply takes an extra trip back and forth alone). This shows we found the fastest schedule, and that it is the only way you can get a different schedule is by switching out girl 1 and girl 2, and boy 1 and boy 2. It also shows that there are several possible schedules if you do not care about timing.
