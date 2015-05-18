@@ -4,11 +4,11 @@
 	<declaration>// Place global declarations here.
 
 const int numMothers = 1;
-const int numGirls = 8;
+const int numGirls = 2;
 const int numFathers = 1;
-const int numBoys = 4;
+const int numBoys = 2;
 const int numPolice = 1;
-const int numThiefs = 2;
+const int numThiefs = 1;
 
 bool boatSide = false;
 bool boatSailing = false;
@@ -39,7 +39,7 @@ broadcast chan sail_completed;
 		<declaration>// Place local declarations here.
 
 int cur_passenger = 0;
-int max_passenger = 2;</declaration>
+int max_passenger = 1;</declaration>
 		<location id="id0" x="-459" y="-476">
 			<name x="-450" y="-510">TakingPassengers</name>
 		</location>
@@ -383,6 +383,7 @@ thief1 = Thief(1);
 //thief2 = Thief(1);
 
 // List one or more processes to be composed into a system.
-system boat, mother, father, girl1, girl2, girl3, girl4, girl5, girl6, girl7, girl8, boy1, boy2, boy3, boy4, police, thief, thief1;
-// , mother3, mother4, mother5, mother6, mother7, mother8, mother9, mother10;//thief2;</system>
+//system boat, mother, father, girl1, girl2, girl3, girl4, girl5, girl6, girl7, girl8, boy1, boy2, boy3, boy4, police, thief, thief1;
+// , mother3, mother4, mother5, mother6, mother7, mother8, mother9, mother10;//thief2;
+system boat, mother, father, girl1, girl2, boy1, boy2, police, thief;</system>
 </nta>
