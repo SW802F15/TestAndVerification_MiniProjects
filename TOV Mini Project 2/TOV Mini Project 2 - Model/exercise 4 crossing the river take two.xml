@@ -367,19 +367,19 @@ mother10 = Mother(9);*/
 father = Father(0);
 girl1 = Girl(0);
 girl2 = Girl(1);
-girl3 = Girl(2);
+/*girl3 = Girl(2);
 girl4 = Girl(3);
 girl5 = Girl(4);
 girl6 = Girl(5);
 girl7 = Girl(6);
-girl8 = Girl(7);
+girl8 = Girl(7);*/
 boy1 = Boy(0);
 boy2 = Boy(1);
-boy3 = Boy(2);
-boy4 = Boy(3);
+//boy3 = Boy(2);
+//boy4 = Boy(3);
 police = PoliceOfficer(0);
 thief = Thief(0);
-thief1 = Thief(1);
+//thief1 = Thief(1);
 //thief2 = Thief(1);
 
 // List one or more processes to be composed into a system.
