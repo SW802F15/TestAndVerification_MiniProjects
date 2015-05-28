@@ -1,32 +1,28 @@
 \section{Reflection}
-\subsection{Test Cases}
-During the execution of the tests, we discovered that the first two test cases for the music player had a significant overlap: if the application did not locate any .mp3 files on the device (test 2), it would not be possible to play it (test 1).
+\paragraph{Reflections of test cases} was done after the execution, and we discovered several deficiencies.
+
+We discovered that the first two test cases for the music player had a significant overlap: if the application did not locate any .mp3 files on the device (test 2), it would not be possible to play it (test 1).
 It proved not to be a problem, as both tests passed, but it illustrated the importance of considering how one test influences the others.
 In this case, test 2 (\textit{locate .mp3 files on device}) should have either been a precondition for test 1 (\textit{play .mp3 files}) or the two tests should have been merged into one.\\
 
 The last test for the music player, \textit{adjust music speed}, turned out to be somewhat vaguely described, and with an unnecessary procedure.
 Some other test cases have some similar problems, but as this is the best example, we will focus on the details of this particular test.
+
 The first precondition is fine - the application has to be running.
-The second says that music must be playing, which is a clear indication of the test being written after the application was developed, as one of the shortcomings of it is that it does not have any way of handling the need of starting a song when the user starts running -- that issue should have had its own user story and acceptance test, but that is besides the point here.
+The second says that music must be playing, which is a clear indication of the test being written after the application was developed.
+One of the shortcomings of it being written so late, is that it does not specify how to start a song when the user starts running, as it was already implemented, that issue should have had its own user story and acceptance test, but that is besides the point here.
 The last precondition says that the device must be on the user's arm, and the procedure says they have to start running followed by increasing the running pace.
-First, there is no specified pace, and secondly it does not specify that it should be verified that the song initially matches the running pace.
-More importantly, this whole test can easily be done without having to run: gently moving the phone up and down works just as well, and the running pace can be read and verified directly on the screen.
-The postcondition is a bit unclear, and would likely cause problems if somebody unfamiliar with the system had to do the test: should the tempo of the song already playing be modified, or should a new song with a matching tempo be playing? This test is supposed to test the former of the options, and another test should test the latter.
+First, there is no specified pace, which can lead to problems concerning, at what pace difference should the tempo change, and how much the tempo should increase. 
+Secondly it is not specified which song(s) should be played, which can lead to problems concerning, if the song's tempo is fit to adjustment instead of song change.
 
-This example shows it is important to be precise in the test description, and to consider how to execute the test so it gives useful results while still providing useful results.\\
+Further, this whole test can easily be performed without having to run: gently moving the phone up and down works just as well, and the running pace can be read and verified directly on the screen.
+The postcondition is a bit unclear, and would likely cause problems if somebody unfamiliar with the system had to do the test: should the tempo of the song already playing be modified, or should a new song with a matching tempo be playing? 
+This test is supposed to test the former of the options, and another test should test the latter.
 
-The test cases made for this project give an overall idea of how well the application lives up to our expectations, but as with most types of software testing, it is hard to test for everything.
-Except for the one test that was not described, as mentioned above, the acceptance tests cover the main aspects of the application, but it does not test everything in detail.
+This example shows it is important to be precise in the test description, and to consider how to execute the tests as simple as possible while still providing useful results.\\
 
-
-%Discuss our test cases why do they not work and what did we do to mitigate this
-%
-%What is the coverage of our acceptance tests.
-%
-%What do we feel we benefited from using acceptance tests?
-%
-%How good is our acceptance test - why not better?
-
+The test cases created for this project gave an overall idea of how well the application lived up to our expectations, but as with most types of software testing, it was hard to test for everything.
+Except for the one test that was not described, as mentioned above, the acceptance tests cover the main aspects of the application, but it does not test everything in detail. \todo{Last line should be rewritten, as I do not understand to what it refers to.}
 
 \paragraph{Automated acceptance tests} are great, as the entire test suite and be run and a complete progress overview will be generated.
 This gives the customer, managers, and developers a better grasp of how the project is progressing and what to implement next.
@@ -41,10 +37,6 @@ It could of course be implemented, but doing so would mean to implement an entir
 Through our unit test suite we discovered that automating changes to the Android GUI is not always accepted by the system, and can sometimes cause errors.
 We are not sure if this will cause problems for the Robotium tool, but it gives cause for concern about time constraints.
 
-
-
-
-
 \paragraph{Prior Knowledge of the Code} might have affected our acceptance tests, since they were written after the code. We suspect that this had the consequence of resulting in different tests, than if we did now know anything about the code. 
 
 Because we had knowledge of the code one could say that we had white box knowledge of the code. We knew where its strengths and weaknesses were, so we naturally had a different insight which resulted in different acceptance tests.
@@ -52,7 +44,7 @@ This possibly had the consequence of us writing tests to pass the code, and not 
 
 If a customer had written the acceptance tests, they would possibly also had been different. Both because of the customer's lack of knowledge of the code, but also because the customer might have a different idea about which criteria the code should fulfill.
 
-
+%Remove?
 \subsection{Acceptance Test}
 Discuss acceptance test as a practice, advantages and disadvantages.
 
