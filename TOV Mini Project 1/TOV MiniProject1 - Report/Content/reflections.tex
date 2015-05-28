@@ -8,7 +8,22 @@ What do we feel we benefited from using acceptance tests?
 
 How good is our acceptance test - why not better?
 
-Automatise acceptance test, what would it do, and what would it take to do it.
+\paragraph{Automating acceptance test} is great, as the entire test suite and be run and a complete progress overview will be generated.
+This gives the customer, managers, and developers a better grasp of how the project is progressing and what to implement next.
+However, it takes very much time and effort to automate these acceptance tests.
+In spite of all the advantages of automating acceptance tests, we abandoned the practice due to the huge time and effort requirements.
+
+We looked at a behaviour-driven development framework called Robotium.
+The tool was great at simulating and notice changes to the (G)UI.
+Although, the tool's features covered most of the needs for our acceptance tests, the tests for our Non-Graphical User Interface (NGUI) was not feasible to test with this tool, due to the need to differentiate between the sounds of two songs.
+It could of course be implemented, but doing so would mean to implement an entire module for sound recognition, and it was deemed too costly to be feasible. 
+
+Through our unit test suite we discovered that automating changes to the Android GUI is not always accepted by the system, and can sometimes cause errors.
+We are not sure if this will cause problems for the Robotium tool, but it gives cause for concern about time constraints.
+
+
+
+
 
 \paragraph{Prior Knowledge of the Code}
 Since the acceptance tests were written after the code, we might have been biased. We suspect that this had the consequence of resulting in different tests, than if we did now know anything about the code. Because we had knowledge of the code one could say that we had white box knowledge of the code. We knew where its strengths and weaknesses were, so we naturally had a different insight which resulted in different acceptance tests.
