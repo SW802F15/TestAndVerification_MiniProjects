@@ -4,7 +4,7 @@ During the execution of the tests, we discovered that the first two test cases f
 It proved not to be a problem, as both tests passed, but it illustrated the importance of considering how one test influences the others.
 In this case, test 2 (\textit{locate .mp3 files on device}) should have either been a precondition for test 1 (\textit{play .mp3 files}) or the two tests should have been merged into one.\\
 
-The last test in for the music player, \textit{adjust music speed}, turned out to be somewhat vaguely described, and with an unnecessary procedure.
+The last test for the music player, \textit{adjust music speed}, turned out to be somewhat vaguely described, and with an unnecessary procedure.
 Some other test cases have some similar problems, but as this is the best example, we will focus on the details of this particular test.
 The first precondition is fine - the application has to be running.
 The second says that music must be playing, which is a clear indication of the test being written after the application was made, as one of the shortcomings of it is that it does not have any way of handling the need of starting a song when the user starts running -- that issue should have had its own user story and acceptance test, but that is besides the point here.
