@@ -33,3 +33,5 @@ As a user, I, would like to save power by turning off the screen while still bei
 A screen is turned off when the power button is pressed.                & \textbf{$\times$}     \\\hline
 \end{tabular}
 \end{table}
+
+The test failed, as the Android devices the application is developed for lack support for detecting touch events. A workaround for this feature was implemented, where a black overlay is showed on the screen, so it appears to be turned off. If we use the workaround instead of turning the screen off, the test passes.
