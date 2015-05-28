@@ -24,18 +24,18 @@ This example shows it is important to be precise in the test description, and to
 The test cases created for this project gave an overall idea of how well the application lived up to our expectations, but as with most types of software testing, it was hard to test for everything.
 Except for the one test that was not described, as mentioned above, the acceptance tests cover the main aspects of the application, but it does not test everything in detail. \todo{Last line should be rewritten, as I do not understand to what it refers to.}
 
-\paragraph{Automated acceptance tests} are great, as the entire test suite and be run and a complete progress overview will be generated.
-This gives the customer, managers, and developers a better grasp of how the project is progressing and what to implement next.
+\paragraph{Automated acceptance tests} are useful, as the entire test suite can be run, and a complete progress overview will be generated.
+This gives the customer, managers, and developers a better grasp of how the project is progressing, and what to implement next.
 However, it takes very much time and effort to automate these acceptance tests.
 In spite of all the advantages of automating acceptance tests, we abandoned the practice due to the huge time and effort requirements.
 
 We looked at a behaviour-driven development framework called Robotium.
 The tool was great at simulating and notice changes to the (G)UI.
-Although, the tool's features covered most of the needs for our acceptance tests, the tests for our Non-Graphical User Interface (NGUI) was not feasible to test with this tool, due to the need to differentiate between the sounds of two songs.
-It could of course be implemented, but doing so would mean to implement an entire module for sound recognition, and it was deemed too costly to be feasible. 
+Although, the tool's features covered most of the needs for our acceptance tests, the tests for our Non-graphical User Interface (NGUI) was not feasible to test with this tool, due to the need to differentiate between the sounds of two songs.
+It could have been implemented, but doing so would mean to implement an entire module for sound recognition, and it was deemed too costly to be feasible. 
 
-Through our unit test suite we discovered that automating changes to the Android GUI is not always accepted by the system, and can sometimes cause errors.
-We are not sure if this will cause problems for the Robotium tool, but it gives cause for concern about time constraints.
+Through our unit test suite, we discovered that automating changes to the Android GUI is not always accepted by the system, and can sometimes cause errors.
+We are not sure if this will cause problems for the Robotium tool, but it gives cause for concern in relation to time constraints.
 
 \paragraph{Prior Knowledge of the Code} might have affected our acceptance tests, since they were written after the code. We suspect that this had the consequence of resulting in different tests, than if we did now know anything about the code. 
 
