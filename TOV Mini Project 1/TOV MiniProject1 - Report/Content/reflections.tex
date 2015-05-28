@@ -7,7 +7,7 @@ In this case, test 2 (\textit{locate .mp3 files on device}) should have either b
 The last test for the music player, \textit{adjust music speed}, turned out to be somewhat vaguely described, and with an unnecessary procedure.
 Some other test cases have some similar problems, but as this is the best example, we will focus on the details of this particular test.
 The first precondition is fine - the application has to be running.
-The second says that music must be playing, which is a clear indication of the test being written after the application was made, as one of the shortcomings of it is that it does not have any way of handling the need of starting a song when the user starts running -- that issue should have had its own user story and acceptance test, but that is besides the point here.
+The second says that music must be playing, which is a clear indication of the test being written after the application was developed, as one of the shortcomings of it is that it does not have any way of handling the need of starting a song when the user starts running -- that issue should have had its own user story and acceptance test, but that is besides the point here.
 The last precondition says that the device must be on the user's arm, and the procedure says they have to start running followed by increasing the running pace.
 First, there is no specified pace, and secondly it does not specify that it should be verified that the song initially matches the running pace.
 More importantly, this whole test can easily be done without having to run: gently moving the phone up and down works just as well, and the running pace can be read and verified directly on the screen.
