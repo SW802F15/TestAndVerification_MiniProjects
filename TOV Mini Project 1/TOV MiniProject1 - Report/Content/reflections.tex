@@ -1,12 +1,32 @@
 \section{Reflection}
 \subsection{Test Cases}
-Discuss our test cases, why they did not work, and what we have done to mitigate this.
+During the execution of the tests, we discovered that the first two test cases for the music player had a significant overlap: if the application did not locate any .mp3 files on the device (test 2), it would not be possible to play it (test 1).
+It proved not to be a problem, as both tests passed, but it illustrated the importance of considering how one test influences the others.
+In this case, test 2 (\textit{locate .mp3 files on device}) should have either been a precondition for test 1 (\textit{play .mp3 files}) or the two tests should have been merged into one.\\
 
-What is the coverage of our acceptance tests.
+The last test in for the music player, \textit{adjust music speed}, turned out to be somewhat vaguely described, and with an unnecessary procedure.
+Some other test cases have some similar problems, but as this is the best example, we will focus on the details of this particular test.
+The first precondition is fine - the application has to be running.
+The second says that music must be playing, which is a clear indication of the test being written after the application was made, as one of the shortcomings of it is that it does not have any way of handling the need of starting a song when the user starts running -- that issue should have had its own user story and acceptance test, but that is besides the point here.
+The last precondition says that the device must be on the user's arm, and the procedure says they have to start running followed by increasing the running pace.
+First, there is no specified pace, and secondly it does not specify that it should be verified that the song initially matches the running pace.
+More importantly, this whole test can easily be done without having to run: gently moving the phone up and down works just as well, and the running pace can be read and verified directly on the screen.
+The postcondition is a bit unclear, and would likely cause problems if somebody unfamiliar with the system had to do the test: should the tempo of the song already playing be modified, or should a new song with a matching tempo be playing? This test is supposed to test the former of the options, and another test should test the latter.
 
-What do we feel we benefited from using acceptance tests?
+This example shows it is important to be precise in the test description, and to consider how to execute the test so it gives useful results while still providing useful results.\\
 
-How good is our acceptance test - why not better?
+The test cases made for this project give an overall idea of how well the application lives up to our expectations, but as with most types of software testing, it is hard to test for everything.
+Except for the one test that was not described, as mentioned above, the acceptance tests cover the main aspects of the application, but it does not test everything in detail.
+
+
+%Discuss our test cases why do they not work and what did we do to mitigate this
+%
+%What is the coverage of our acceptance tests.
+%
+%What do we feel we benefited from using acceptance tests?
+%
+%How good is our acceptance test - why not better?
+
 
 Automatise acceptance test, what would it do, and what would it take to do it.
 
